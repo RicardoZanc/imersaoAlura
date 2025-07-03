@@ -1,0 +1,15 @@
+services:
+  api:
+    build: .
+    container_name: "api"
+    ports:
+      - "8000:8000"
+    # Monta o diretório atual no diretório de trabalho do contêiner
+    # Isso permite que o uvicorn com --reload detecte mudanças nos arquivos
+    # e também persiste o banco de dados SQLite (escola.db) na sua máquina local.
+    volumes:
+      - .:/app
+    # O comando para iniciar a aplicação é herdado do CMD no seu Dockerfile.
+    # CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+
